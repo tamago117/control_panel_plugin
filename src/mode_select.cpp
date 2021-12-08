@@ -2,12 +2,12 @@
 #include <std_msgs/String.h>
 
 #include <control_panel_plugin/mode_select.h>
-#include "control_panel_plugin/ui_mode_select.h"
+#include "ui_mode_select.h"
 
 namespace control_panel_plugin
 {
 
-modeSelect::modeSelect(QWidget *parent) : Panel(parent), ui(new Ui::mode_select())
+modeSelect::modeSelect(QWidget *parent) : Panel(parent), ui(new Ui::mode_selectUI())
 {
     ui->setupUi(this);
 }
@@ -18,6 +18,7 @@ void modeSelect::onInitialize()
 {
     connect(ui->run, SIGNAL(clicked()), this, SLOT(startButtonClicked()));
     connect(ui->stop, SIGNAL(clicked()), this, SLOT(stopButtonClicked()));
+    connect(ui->poseEstimate, SIGNAL(clicked()), this, SLOT(stopButtonClicked()));
     //connect(ui-> (qt object name) , SIGNAL( object action ), this, SLOT( function ));
 
     pub = nh.advertise<std_msgs::String>("mode_select/mode", 1);

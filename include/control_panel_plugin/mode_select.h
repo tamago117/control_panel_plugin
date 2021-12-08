@@ -8,7 +8,7 @@
 #include <std_msgs/String.h>
 
 namespace Ui {
-class mode_select;
+class mode_selectUI;
 }
 
 namespace control_panel_plugin{
@@ -29,7 +29,7 @@ private Q_SLOTS:
     void stopButtonClicked();
 
 protected:
-    Ui::mode_select* ui;
+    Ui::mode_selectUI* ui;
     std_msgs::String message;
 
     ros::NodeHandle nh;
