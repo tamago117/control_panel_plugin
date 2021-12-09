@@ -6,6 +6,8 @@
 
 #include <rviz/panel.h>
 #include <std_msgs/String.h>
+#include <geometry_msgs/PoseWithCovarianceStamped.h>
+#include <geometry_msgs/Pose.h>
 
 namespace Ui {
 class mode_selectUI;
@@ -27,13 +29,27 @@ public:
 private Q_SLOTS:
     void startButtonClicked();
     void stopButtonClicked();
+    void dialValueChanged(int value);
+    void poseEstimateButtonClicked();
+    void wayPointNumberChanged(int value);
+    void restartButtonClicked();
+    void wpTopic_lineEditChanged();
+
+private:
+    void runPublish(const ros::TimerEvent& e);
+    void stopPublish(const ros::TimerEvent& e);
+    ros::Timer run_timer;
+
 
 protected:
     Ui::mode_selectUI* ui;
     std_msgs::String message;
+    int delayTime{0};
+    geometry_msgs::PoseWithCovarianceStamped pubpose;
 
     ros::NodeHandle nh;
-    ros::Publisher pub;
+    ros::Publisher mode_pub;
+    ros::Publisher initial_pub;
 };
 
 }//namespace control_panel_plugin

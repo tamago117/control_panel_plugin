@@ -39,7 +39,7 @@
       <rect>
        <x>20</x>
        <y>20</y>
-       <width>223</width>
+       <width>263</width>
        <height>195</height>
       </rect>
      </property>
@@ -56,7 +56,36 @@
            </widget>
           </item>
           <item>
-           <widget class="QLCDNumber" name="lcdNumber_delay"/>
+           <widget class="QLCDNumber" name="lcdNumber_delay">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>12</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::Panel</enum>
+            </property>
+            <property name="lineWidth">
+             <number>1</number>
+            </property>
+            <property name="midLineWidth">
+             <number>2</number>
+            </property>
+            <property name="mode">
+             <enum>QLCDNumber::Dec</enum>
+            </property>
+            <property name="segmentStyle">
+             <enum>QLCDNumber::Flat</enum>
+            </property>
+           </widget>
           </item>
           <item>
            <widget class="QDial" name="dial_delay">
@@ -77,6 +106,12 @@
           </property>
           <item>
            <widget class="QPushButton" name="run">
+            <property name="minimumSize">
+             <size>
+              <width>120</width>
+              <height>0</height>
+             </size>
+            </property>
             <property name="font">
              <font>
               <pointsize>15</pointsize>
