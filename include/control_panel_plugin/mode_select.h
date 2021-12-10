@@ -1,13 +1,21 @@
+/**
+* @file mode_select.h
+* @brief rviz plugin for robot control
+* @author Michikuni Eguchi
+* @date 2021.12.10
+*/
+
 #pragma once
 
 #ifndef Q_MOC_RUN
     #include <ros/ros.h>
 #endif
 
+#include <string>
 #include <rviz/panel.h>
 #include <std_msgs/String.h>
-#include <geometry_msgs/PoseWithCovarianceStamped.h>
 #include <geometry_msgs/Pose.h>
+#include <std_msgs/Int32.h>
 
 namespace Ui {
 class mode_selectUI;
@@ -38,17 +46,19 @@ private Q_SLOTS:
 private:
     void runPublish(const ros::TimerEvent& e);
     void stopPublish(const ros::TimerEvent& e);
-    ros::Timer run_timer;
+    ros::Timer delay_timer;
 
 
 protected:
     Ui::mode_selectUI* ui;
     std_msgs::String message;
     int delayTime{0};
-    geometry_msgs::PoseWithCovarianceStamped pubpose;
+    int wpNum{0};
+    std::string topic_name;
 
     ros::NodeHandle nh;
     ros::Publisher mode_pub;
+    ros::Publisher setWp_pub;
     ros::Publisher initial_pub;
 };
 
